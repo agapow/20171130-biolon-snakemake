@@ -1,0 +1,89 @@
+{
+   "pageSetup": {
+      "width": "16cm",
+      "height": "9cm",
+      
+      "margin-top": "2mm",
+      "margin-bottom": "5mm",
+      "margin-left": "8mm",
+      "margin-right": "10mm",
+      "margin-gutter": "0cm",
+      
+      "spacing-header": "5mm",
+      "spacing-footer": "0mm",
+      
+      "firstTemplate": "coverPage"
+   },
+   
+   "fontsAlias": {
+      "stdBold": "DejaVu Sans-Bold",
+      "stdBoldItalic": "DejaVu Sans-BoldItalic",
+      "stdFont": "DejaVu Sans-Regular",
+      "stdItalic": "DejaVu Sans-Italic",
+      "stdMono": "DejaVu Sans Mono",
+      "stdMonoBold": "DejaVu Sans Mono-Bold",
+      "stdMonoBoldItalic": "DejaVu Sans Mono-BoldItalic",
+      "stdMonoItalic": "DejaVu Sans Mono-Italic",
+      "stdSerif": "DejaVu Serif"
+   },
+
+   "pageTemplates" : {
+   
+      "coverPage": {
+         "frames": [
+            ["0cm", "0cm", "100%", "100%"]
+         ],
+         "alignment": "TA_CENTER",
+         "background" : "background.png",
+         "showHeader" : true,
+         "showFooter" : true
+      },
+      
+      "cutePage": {
+         "frames": [
+            ["0", "0", "100%", "100%"]
+         ],
+         "showHeader" : false,
+         "showFooter" : false
+      }
+      
+   },
+   
+   "styles": {
+      "base": {
+         "kerning": true
+      },
+      
+      "title": {
+         // the document title
+        "parent": "heading",
+        "fontName": "stdBold",
+        "fontSize": "200%",
+        "textColor": "#002147",
+        "alignment": "TA_CENTER",
+        "spaceAfter": 10
+     },
+
+      "subtitle": {
+         // document subtitle
+        "parent": "title",
+        "fontName": "stdBoldItalic",
+        "fontSize": "75%",
+        "textColor": "#003E74",
+        "spaceBefore": 0,
+        "spaceAfter": 10
+      },
+      
+      "heading1": {
+         // slide heading
+        "parent": "heading",
+        "fontName": "stdBold",
+        "fontSize": "175%",
+        "alignment": "TA_LEFT",
+        "textColor": "#002147",
+        "spaceBefore": 0,
+        "spaceAfter": 10
+     }
+   }
+}
+
