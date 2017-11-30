@@ -3,9 +3,14 @@ An introduction to Snakemake
 A humane reproducibility system
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. image:: images/snakemake-logo.jpg
+   :width: 50%
+
 :Author: Paul Agapow
 :email: p.agapow@imperial.ac.uk
 :Date: 2017-11-30
+
+
 
 
 A new thing to feel ashamed about
@@ -33,17 +38,17 @@ No one agrees: *That's actually replication / repetition / ...*
 
    * The casual conversation swaps and intermingles different terms
    * Even if you go to formal papers and talks about reproducibility, they don't agree, interpeting identical scenarios in different ways. In fact, you can find completely oppposed definitions: one "reproducibility" is another's "replicability" and anothers "repeeatbility"
-   
+
    But let me give you a broad consensus definition that's easier to get a handle on and useful. Think about these things. What are:
-   
+
    * The data: the numbers or samples going into the analysis
    * The methodology: what you do to the data, including the code and sofwtare you use and the parameters for the same
    * The operator: the lab or site carrying out the analysis
-   
+
    Then:
-   
+
    * Reproducibility means someone else -- another operator -- could take your data and methodology, use them and come up with the same answer. It's the minimal standard for useful research, asking if the experiemnt could be independently repeated. Same experiment, different scientist. If it fails the problem is you.
-   * Replicability means that some one -- you or someone else -- could take a different dataset, use the same methodology and get a consistent answer. 
+   * Replicability means that some one -- you or someone else -- could take a different dataset, use the same methodology and get a consistent answer.
 
 
 
@@ -63,12 +68,12 @@ The Rs of "small r" reproducibility:
 
 .. notes:
 
-   This is all very well but we need to get things done. You'll come across various perscriptive statements about how every analysis should be checked into a git repository, the versions of the software used recorded, everything run in a new and isolated docker environment ... 
-   
+   This is all very well but we need to get things done. You'll come across various perscriptive statements about how every analysis should be checked into a git repository, the versions of the software used recorded, everything run in a new and isolated docker environment ...
+
    And who has the time? Reproducibility, replicability, (yadda yadda) are all worthy things but how do they fit into real scientific work? It's vanishly rare that any analysis will actually need to be "reproduced" in the strict sense of our definition. Line managers will be unimpressed by your dedication to scientific purity, your colleagues will see it as "not real work". To be used, reproducibility needs to be low-effort, frictionless. To be used, reproducibility needs to be useful.
-   
+
    This is why I am more sympathetic to "small r" reproducibility, tools & approaches that help me to acheive reproducibility and a host of reproducibility-adjacent issues:
-   
+
    * Reproduce: can I give this analysis to someone else so they can do it?
    * Replicate: can this analysis be used on other sets of data?
    * Reliable & robust: does this work every time, does it help me not make mistakes?
@@ -89,8 +94,8 @@ Why Snakemake?
 
 .. notes:
 
-   There is a cornucopia of reproducibility tools and given the many meanings of "reproducibility", different tools have different reproducbility strengths. My call is that Snakemake is good at this "small r" reproducibility, the everyday useful. It's "humane". You don't have to bend and distort your analysis to fit the tool, primarily because it's just Python. 
-   
+   There is a cornucopia of reproducibility tools and given the many meanings of "reproducibility", different tools have different reproducbility strengths. My call is that Snakemake is good at this "small r" reproducibility, the everyday useful. It's "humane". You don't have to bend and distort your analysis to fit the tool, primarily because it's just Python.
+
 
 What's it look like?
 --------------------
@@ -112,7 +117,7 @@ And how do you use it?
 ----------------------
 
 .. code:: bash
-   
+
    % snakemake
 
 * Look for a file called `Snakemake`
@@ -122,7 +127,7 @@ And how do you use it?
 
 What does the worflow look like?
 --------------------------------
-   
+
 .. code:: python
 
    rule print_results:
@@ -131,7 +136,7 @@ What does the worflow look like?
          with open (input, 'w') as in_hndl:
             for line in in_hndl:
                print (line)
-      
+
    rule wordcount_isles:
       input: "moby-dick.txt"
       output: "moby-wordcount.txt"
@@ -192,19 +197,18 @@ Example: script & keyword arguments
 Generate execution path
 -----------------------
 
-Can compute the graph (DAG) of steps with dependencies
+.. image:: images/dag.png
+   :width: 15%
 
 
 Reports
 -------
 
-.. code:: python 
+.. code:: python
 
    rule report:
-       input:
-           "calls/all.vcf"
-       output:
-           "report.html"
+       input: "calls/all.vcf"
+       output: "report.html"
        run:
            with open (input[0]) as vcf:
                n_calls = sum (1 for l in vcf if not l.startswith("#"))
@@ -213,12 +217,9 @@ Reports
            An example variant calling workflow
            ===================================
 
-           Reads mapped to Yeast ref genome & variants
-           called jointly with SAMtools/BCFtools.
-
-           This resulted in {n_calls} variants (see Table T1_).
+           Reads mapped to Yeast ref genome, giving {n_calls} variants (see Table T1_).
            """, output[0], T1=input[0])
-        
+
 
 Nifty tricks
 ------------
@@ -236,8 +237,8 @@ Acknowledgements
 * Snakemake (https://snakemake.readthedocs.io)
    * Some examples taken from there
 * Köster & Rahmann (2012) “Snakemake - A scalable bioinformatics workflow engine” **Bioinformatics**
-* Paediatric Infectious Disease @ ICL 
-* Data Science Institute @ ICL 
+* Paediatric Infectious Disease @ ICL
+* Data Science Institute @ ICL
 
 
 An aside: this presentation
@@ -255,7 +256,7 @@ Markup for previous slide
 -------------------------
 
 ::
-   
+
    An aside: this presentation
    ---------------------------
 
@@ -265,3 +266,10 @@ Markup for previous slide
       * Version control, include other files, produce with other programs ...
    * Many alternatives (rst2s5, rst2beamer, remark, hovercraft ...)
    * Was it worth it ...?
+
+
+But wait!
+---------
+
+.. image:: images/fog-panel.png
+   :width: 70%
