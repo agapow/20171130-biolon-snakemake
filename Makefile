@@ -1,3 +1,6 @@
+# a talk written with rst2pdf, maybe not worth it
+# talk presented at bioinformatics.london 2017.11.30
+
 EXE=/homes/pagapow/.linuxbrew/bin/rst2pdf
 INFILE=intro-to-snakemake.rst
 STYLES=styles.json
